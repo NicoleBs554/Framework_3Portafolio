@@ -1,0 +1,66 @@
+.testimonial-shell {
+  padding: 1.75rem;
+  border-radius: 28px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(126,231,135,0.12);
+  box-shadow: var(--shadow);
+}
+
+.testimonial-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-header span {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+}
+
+.testimonial-header h3 {
+  margin: 0;
+}
+
+.testimonial-controls button {
+  border: 1px solid rgba(126,231,135,0.18);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonial-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.testimonial-stars {
+  display: flex;
+  gap: 0.2rem;
+  color: var(--accent);
+}
+
+.testimonial-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.testimonial-card strong {
+  display: block;
+  color: var(--text);
+  margin-top: 0.5rem;
+}
+
+.testimonial-card div p {
+  margin: 0.15rem 0 0;
+  color: var(--muted);
+}
