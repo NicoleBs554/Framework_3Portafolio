@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext.jsx';
 import Layout from './components/Layout/Layout.jsx';
 import Login from './pages/Login/Login.jsx';
@@ -12,7 +12,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute.jsx';
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Login initialMode="register" />} />
@@ -33,7 +33,7 @@ function App() {
           </Route>
           <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </AuthProvider>
   );
 }
