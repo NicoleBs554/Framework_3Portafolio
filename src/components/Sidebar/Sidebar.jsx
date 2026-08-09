@@ -2,6 +2,8 @@ import { NavLink } from 'react-router-dom';
 import { Home, User, Code2, LayoutGrid, MessageCircle, LogOut } from 'lucide-react';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext.jsx';
+import { ProfileContext } from '../../context/ProfileContext.jsx';
+import profileImage from '../../../Perfil.jpg';
 import './Sidebar.css';
 
 const navItems = [
@@ -13,13 +15,16 @@ const navItems = [
 
 export default function Sidebar() {
   const { user, logout } = useContext(AuthContext);
+  const { profile } = useContext(ProfileContext);
 
   return (
     <aside className="sidebar">
       <div className="sidebar-brand">
-        <div className="avatar">NB</div>
+        <div className="avatar">
+          <img src={profile?.avatar || profileImage} alt="Perfil" />
+        </div>
         <div>
-          <p className="brand-name">Nicole B</p>
+          <p className="brand-name">{profile?.name || 'Nicole B'}</p>
           <p className="brand-role">Data Portfolio</p>
         </div>
       </div>

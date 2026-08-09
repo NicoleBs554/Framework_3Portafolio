@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext.jsx';
+import videoFile from '../../../VIDEO1.mp4';
 import './Login.css';
 
 export default function Login({ initialMode = 'login' }) {
@@ -49,7 +50,9 @@ export default function Login({ initialMode = 'login' }) {
       <div className="login-preview">
         <h2>Bienvenido a mi portfolio</h2>
         <p>Revisa mis proyectos de Data, mis gráficos y deja un mensaje si quieres colaborar.</p>
-        <div className="login-video-placeholder">Video aquí</div>
+        <div className="login-video-placeholder">
+          <video className="login-video" src={videoFile} controls playsInline />
+        </div>
       </div>
     </div>
   );

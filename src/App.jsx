@@ -1,5 +1,6 @@
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext.jsx';
+import { ProfileProvider } from './context/ProfileContext.jsx';
 import Layout from './components/Layout/Layout.jsx';
 import Login from './pages/Login/Login.jsx';
 import About from './pages/About/About.jsx';
@@ -11,30 +12,60 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute.jsx';
 
 function App() {
   return (
-    <AuthProvider>
-      <HashRouter>
+    <HashRouter>
+      <AuthProvider>
+        <ProfileProvider>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Login initialMode="register" />} />
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <Layout />
-              </ProtectedRoute>
-            }
-          >
-            <Route index element={<About />} />
-            <Route path="about" element={<About />} />
-            <Route path="skills" element={<Skills />} />
-            <Route path="portfolio" element={<Portfolio />} />
-            <Route path="project/:id" element={<ProjectDetail />} />
-            <Route path="contact" element={<Contact />} />
+          <Route element={<Layout />}>
+            <Route path="/" element={<Navigate to="/about" replace />} />
+            <Route
+              path="/about"
+              element={
+                <ProtectedRoute>
+                  <About />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/skills"
+              element={
+                <ProtectedRoute>
+                  <Skills />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/portfolio"
+              element={
+                <ProtectedRoute>
+                  <Portfolio />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/project/:id"
+              element={
+                <ProtectedRoute>
+                  <ProjectDetail />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/contact"
+              element={
+                <ProtectedRoute>
+                  <Contact />
+                </ProtectedRoute>
+              }
+            />
           </Route>
           <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
-      </HashRouter>
-    </AuthProvider>
+      </ProfileProvider>
+      </AuthProvider>
+    </HashRouter>
   );
 }
 
